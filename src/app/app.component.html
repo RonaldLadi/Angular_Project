@@ -1,0 +1,49 @@
+<h1>*ngFor</h1>
+<button>Add name</button>
+<ul>
+  <li *ngFor="let name of names; index as i ">
+    {{i}} {{ name }}
+  </li>
+</ul>
+<hr/>
+
+<h1>*ngIf</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.name" />
+<p *ngIf="person.name === 'ronald' " >Soy Ronald</p>
+<p *ngIf="person.name === 'daniel' && person.age == 18; else elseBlock">Soy Daniel</p>
+<ng-template #elseBlock>
+  <p>Bloque de else</p>
+</ng-template>
+<hr/>
+
+<h1>NgModel</h1>
+<p>Nombre {{ person.name }}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.name" />
+<p>Valid: {{nameInput.valid }}</p>
+<input type="number" max="18" min="10" required #ageInput="ngModel" [(ngModel)]="person.age" />
+<p>Age {{ person.age }}</p>
+<p>Valid: {{ageInput.valid }}</p>
+
+<hr/>
+<h1>Eventos</h1>
+<button [disabled]="btnDisabled">Enviar</button>
+<button (click)="toggleButton()">Toggle Button</button>
+<p>Edad {{ person.age }}</p>
+<button (click)="increaseAge()">Age ++</button>
+<div class="box" (scroll)="onScroll($event)">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut sit nisi assumenda beatae aliquid quibusdam quaerat cum ea qui consectetur ducimus dolor animi maxime voluptas quidem, magni sint quis temporibus.</p>
+</div>
+<p>Nombre {{ person.name }}</p>
+<input type="text" [value]="person.name" (keyup)="changeName($event)" />
+<hr/>
+<h1>Propiedades</h1>
+<button [disabled]="btnDisabled">Enviar</button>
+<input type="text" [value]="person.name"/>
+<progress max="100" [value]="person.age"></progress>
+<img width="100" [src]="person.avatar" />
+<hr/>
+<h1>Hola mundo</h1>
+<h2>{{ 'Hola mundo'.repeat(5) }} </h2>
+<p>3 + 3 = {{ 3 + 3 }}</p>
+<h3>Hola, soy {{ name }} y tengo {{ age }}</h3>
+<img src={{img}} alt="image">
